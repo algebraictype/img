@@ -1,0 +1,5 @@
+img: No argument provided. Walking current directory. 
+./train.png
+img: Opening image.
+2304
+1024
