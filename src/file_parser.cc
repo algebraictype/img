@@ -25,10 +25,8 @@
     for(; this->dir_iter != std::filesystem::directory_iterator(); ++this->dir_iter){
 
         if(std::filesystem::is_regular_file(dir_iter->path())){
-
-            //TODO: impl init flag to differ between first run and n'th run
-            std::cout<< "IT: " << this->iterated_over_files <<std::endl;
-            std::cout<< "NOVF: " << this->number_of_valid_files << std::endl;
+            std::cout<< "Iterator value: " << this->iterated_over_files <<std::endl;
+            std::cout<< "Number of valid files: " << this->number_of_valid_files << std::endl;
             
             if((this->iterated_over_files) == this->number_of_valid_files){
                 this->iterated_over_files = 0;
@@ -40,13 +38,15 @@
             if(dir_iter->path().extension() == ".png" || dir_iter->path().extension() == ".jpg" || dir_iter->path().extension() == ".jpeg") {
                 this->current_file = dir_iter->path().string();
                 std::cout << "current: " << this->current_file << std::endl;
-                this->iterated_over_files++;
-                ++this->dir_iter;
+                while(current_file == dir_iter->path().string()){
+                    this->iterated_over_files++;
+                    ++this->dir_iter;
+                }
                 return true;
             }
         }
     }
-return false;
+    return false;
 }
 
 /*

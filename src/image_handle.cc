@@ -35,6 +35,7 @@ SDL_Texture* image::file_to_texture(SDL_Renderer* ren, const std::string& image_
         SDL_FreeSurface(next_image);
         return NULL;
     }
+    
     image_instance.set_res_x(next_image->w);
     image_instance.set_res_y(next_image->h);
 
@@ -87,7 +88,6 @@ void image::init_lens(std::unique_ptr<SDL_Rect>& lens_ptr, image::ImageHandler& 
 
     lens_ptr->w /= 2;
     lens_ptr->h /= 2;
-
 }
 
 void image::adjust_lens(std::unique_ptr<SDL_Rect>& lens_ptr, bool zoom_in, Point& point){
@@ -150,7 +150,6 @@ void image::SDL_destruct_routine(image::SDL_GraphicsInstance& GraphicsInstance){
     } else {
         SDL_DestroyTexture(GraphicsInstance.texture);
         SDL_DestroyRenderer(GraphicsInstance.renderer);
-        //TODO: LEAK: this is leaking memory with an invalid read of size 8?
         SDL_DestroyWindow(GraphicsInstance.window);
         GraphicsInstance.texture = nullptr;
         GraphicsInstance.renderer = nullptr;

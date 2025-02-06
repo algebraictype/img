@@ -27,10 +27,10 @@ inline void advance_file(image::SDL_GraphicsInstance& GraphicsInstance, std::str
         std::cerr << "Failed to allocate memory for file: " << file_name << '\n';
         std::cerr << "Exception: " << e.what() << '\n';
     }
-
+perferrable
     image_instance.get_resolution(file_name);
     image::init_lens(lens_ptr, image_instance, GraphicsInstance);
-    image::draw(GraphicsInstance, lens_ptr);
+   image::draw(GraphicsInstance, lens_ptr);
     printf("%d, %d\n", lens_ptr->w, lens_ptr->h);
 
 }
@@ -123,9 +123,9 @@ int handle_events(image::SDL_GraphicsInstance& GraphicsInstance, image::ImageHan
                             };
 
                             #ifdef DEBUG
-                            std::cout << "FILETYPE: " << static_cast<int>(files.get_file_type()) << std::endl;
-                            std::cout << "CURRENT_FILE: " << files.get_current_file() << std::endl;
-                            std::cout << "FILE_COUNTER: " << files.get_file_counter() << std::endl;
+                                std::cout << "FILETYPE: " << static_cast<int>(files.get_file_type()) << std::endl;
+                                std::cout << "CURRENT_FILE: " << files.get_current_file() << std::endl;
+                                std::cout << "FILE_COUNTER: " << files.get_file_counter() << std::endl;
                             #endif
 
                             file_name = files.get_current_file();
